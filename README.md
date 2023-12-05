@@ -35,6 +35,4 @@ git merge branch-name
 
 ## Step 3
 
-Explore what is Linux Apache webserver :D
-
-1. testing if I got this
+Explore what is Linux Apache webserver first :D
