@@ -30,4 +30,4 @@ git checkout testing
 git merge branch-name
 ```
 
-Step 3
+## Step 3
