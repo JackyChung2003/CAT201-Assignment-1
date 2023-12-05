@@ -25,9 +25,14 @@ git add --all              # Add all changes
 # Commit the staged changes
 git commit -m "Your commit message here"
 
+# Push the code
+git push
+
 # Merge branches (Ensure you only merge your branch into 'testing' to avoid issues)
 git checkout testing
 git merge branch-name
 ```
 
 ## Step 3
+
+Explore what is Linux Apache webserver :D
