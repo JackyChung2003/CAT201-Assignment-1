@@ -4,7 +4,6 @@
 
 To work on a GitHub repository locally, you need to clone it to your computer. Follow these steps in [CLONE_REPO](CLONE_REPO.md) to clone a repository:
 
-## Step 1: Open a Terminal or Command Prompt
+## Step 2: Familiarise with git command
 
-- On Windows, use Command Prompt or PowerShell.
-- On macOS or Linux, use the Terminal.
+For more detail, please go and view [GIT_COMMAND_INSTRUCTION](GIT_COMMAND_INSTRUCTION.md) page first, below i will show some important command for future reference:
