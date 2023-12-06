@@ -33,6 +33,6 @@ git checkout testing
 git merge branch-name
 ```
 
-## Step 3
+## Step 3: Set up Linux Apache webserver
 
-Explore what is Linux Apache webserver first :D
+can go and check the [**How to install Apache web server in a Docker container**](DOCKER_APACHE_SERVER.md).
