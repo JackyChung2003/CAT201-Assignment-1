@@ -1,0 +1,8 @@
+services:
+  apache-service:
+    container_name: public1_html
+    image: httpd:2.4
+    ports:
+      - 7226:80
+    volumes:
+      - ./public1-html:/usr/local/apache2/htdocs/
