@@ -3,19 +3,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Group ID (replace with your organization's domain) -->
-    <groupId>com.example</groupId>
+    <groupId>com.txtpdfconverter</groupId>
 
-    <!-- Artifact ID (replace with your project's name) -->
     <artifactId>txt-pdf-converter</artifactId>
 
-    <!-- Version number for your project -->
     <version>1.0.0</version>
 
-    <!-- Define the packaging type as JAR (Java Archive) -->
     <packaging>jar</packaging>
 
-    <!-- Dependencies for PDFBox -->
     <dependencies>
         <dependency>
             <groupId>org.apache.pdfbox</groupId>
@@ -54,7 +49,6 @@
         </dependency>
     </dependencies>
     
-    <!-- Maven Compiler Plugin Configuration -->
     <build>
         <plugins>
             <plugin>
