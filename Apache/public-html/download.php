@@ -1,32 +1,21 @@
 <?php
 // // Check if the filename is provided in the query parameter
 if (isset($_GET['output_file'])) {
-
-// Check if the filename is provided in the POST parameter
-// if (isset($_POST['output_file'])) {
-    // Get the filename from the query parameter
     
     $encodedFiles = $_GET['output_file'];
-    // $encodedFiles = $_POST['output_file'];
     // echo "encodedFiles: " . $encodedFiles . "<br>";
 
-    // echo "encodedFiles: " . $encodedFiles . "<br>";
     $decodedFiles = json_decode(htmlspecialchars_decode($encodedFiles), true);
     // echo "decodedFiles: " . $decodedFiles . "<br>";
 
     // Decode the URL-encoded string
     // $decodedFiles = urldecode($encodedFiles);
-
     // echo "decodedFiles: " . $decodedFiles . "<br>";
 
     // Unserialize the string back into an array
     $convertedFiles = unserialize($decodedFiles);
     // echo "convertedFiles: " . $convertedFiles . "<br>";
     // print_r($convertedFiles);
-
-    // echo "convertedFiles: ";
-    // print_r($convertedFiles);
-    // echo "<br>";
 
     // Set the path to the directory where the files are stored
     $outputDirectory = 'Output_Files/';
