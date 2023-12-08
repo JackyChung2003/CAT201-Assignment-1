@@ -1,3 +1,5 @@
+package com.pdftxtconverter;
+
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -6,7 +8,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class TxtToPdfConverter {
+public class ttp {
     public static void main(String[] args) {
         String inputFilePath = args[0];
         String outputFilePath = args[1];
