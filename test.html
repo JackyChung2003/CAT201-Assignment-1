@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Text Converter</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #3498db;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        .upload-btn-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .custom-file-upload {
+            cursor: pointer;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+            width: 100%;
+            display: inline-block;
+            border: none;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #2980b9;
+        }
+
+        .custom-file-upload input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+
+        .custom-file-upload .file-name {
+            margin-left: 10px;
+            line-height: 32px;
+            font-size: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #output {
+            display: none;
+            margin-top: 20px;
+            white-space: pre-line;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #uploaded-files-container {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #uploaded-files-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #convert-btn {
+            display: none;
+            background-color: #2ecc71;
+            width: 100%;
+            border: none;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #loading-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #loading-screen p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        #progress-bar-container {
+            width: 60%;
+            margin-top: 20px;
+            background: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        #progress-bar {
+            height: 20px;
+            width: 0;
+            background: #3498db;
+            border-radius: 5px;
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>PDF to Text Converter</h1>
+
+        <div class="upload-btn-wrapper">
+            <label for="file-input" class="custom-file-upload">Upload Files</label>
+            <input type="file" name="file-input" id="file-input" multiple accept=".pdf, .txt">
+            <span class="file-name"></span>
+        </div>
+
+        <div id="uploaded-files-container">
+            <h2>Uploaded Files</h2>
+            <ul id="uploaded-files-list"></ul>
+        </div>
+
+        <button id="convert-btn" onclick="startConversion()">Convert</button>
+
+        <div id="output"></div>
+    </div>
+
+        
+    </div>
+
+    <div id="loading-screen">
+        <p>Conversion in progress. Please wait...</p>
+        <div id="progress-bar-container">
+            <div id="progress-bar"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('file-input').addEventListener('change', handleFileSelect);
+
+        function handleFileSelect(event) {
+            const filesInput = document.getElementById('file-input');
+            const uploadedFilesContainer = document.getElementById('uploaded-files-container');
+            const uploadedFilesList = document.getElementById('uploaded-files-list');
+            const convertBtn = document.getElementById('convert-btn');
+
+            // Clear previous uploaded files
+            uploadedFilesList.innerHTML = '';
+
+            // Display the uploaded files
+            for (const file of filesInput.files) {
+                const listItem = document.createElement('li');
+                listItem.textContent = file.name;
+                uploadedFilesList.appendChild(listItem);
+            }
+
+            // Show the uploaded files container
+            uploadedFilesContainer.style.display = 'block';
+
+            // Show the "Convert" button when files are uploaded
+            convertBtn.style.display = 'block';
+        }
+
+        function convertFiles() {
+            const filesInput = document.getElementById('file-input');
+            const outputContainer = document.getElementById('output');
+
+            outputContainer.innerHTML = ''; // Clear previous content
+
+            const files = filesInput.files;
+
+            for (const file of files) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const result = e.target.result;
+                    const fileType = file.type;
+
+                    let content = '';
+
+                    if (fileType === 'application/pdf') {
+                        // Logic to handle PDF files (you can implement this on the server)
+                        content = 'PDF File Content:\n\n' + result;
+                    } else if (fileType === 'text/plain') {
+                        // Logic to handle TXT files
+                        content = 'Text File Content:\n\n' + result;
+                    } else {
+                        content = 'Unsupported file type: ' + fileType;
+                    }
+
+                    const fileDiv = document.createElement('div');
+                    fileDiv.innerHTML = '<strong>' + escape(file.name) + '</strong><br>' + content;
+
+                    outputContainer.appendChild(fileDiv);
+                };
+
+                reader.readAsText(file);
+            }
+
+            // Show the output container after conversion
+            outputContainer.style.display = 'block';
+        }
+
+        function startConversion() {
+            // Show the loading screen
+            document.getElementById('loading-screen').style.display = 'flex';
+
+            // Simulate a delay for demonstration purposes (replace this with your actual conversion logic)
+            let progress = 0;
+            const interval = setInterval(function () {
+                // Update the progress bar
+                document.getElementById('progress-bar').style.width = progress + '%';
+                progress += 10;
+
+                if (progress > 100) {
+                    // Redirect to the waiting screen
+                    clearInterval(interval);
+                    window.location.href = 'test2.html';
+                }
+            }, 1000); // Update the progress every 1 second (adjust as needed)
+        }
+    </script>
+</body>
+</html>

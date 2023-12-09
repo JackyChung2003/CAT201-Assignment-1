@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversion in Progress</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        p {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        #waiting-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        #progress-bar-container {
+            width: 60%;
+            margin-top: 20px;
+            background: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        #progress-bar {
+            height: 20px;
+            width: 0;
+            background: #3498db;
+            border-radius: 5px;
+            transition: width 0.5s ease-in-out;
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Conversion in Progress</h1>
+        <p>Please wait while we convert your files...</p>
+    </div>
+
+    <div id="waiting-screen">
+        <p>Conversion in progress. Please wait...</p>
+        <div id="progress-bar-container">
+            <div id="progress-bar"></div>
+        </div>
+    </div>
+
+    <script>
+  let progress = 0;
+        const interval = setInterval(function () {
+            // Update the progress bar
+            document.getElementById('progress-bar').style.width = progress + '%';
+            progress += 10;
+
+            if (progress > 100) {
+                // Redirect to the download page
+                clearInterval(interval);
+                window.location.href = 'test3.html';
+            }
+        }, 1000); // Update the progress every 1 second (adjust as needed)
+    </script>
+
+</body>
+</html>
