@@ -1,44 +1,42 @@
 # CAT201-Assignment-1
+> **MEMBERS**
 
-## Step 1: Clone the Repository
+**1.** `Jacky Chung Sze Yung`
 
+**No. Matric -** `163326`
+
+**2.** `Axler Chin Shun Yuan`
+
+**No. Matric -** `162331`
+
+**3.** `Andrew Tee Wei Xiong`
+
+**No. Matric -** `164761`
+
+**4.** `Teh Hong Jun`
+**No. Matric -** `164723`
+
+> GROUP NUMBER
+
+**GROUP 22**
+
+> VIDEO PRESENTATION
+
+
+> INTRODUCTION
+
+We are from **GROUP 22**. This is our first website we ever made by using  `HTML`, `CSS`, `Java` and `PHP` programming language. Our project is called **Convert4U**. It is a website that help users to convert their pdf files to text files, and text files to pdf files, or even all in one !
+
+> FEATURES
+- Friendly user interface
+- Supported ALL IN ONE convertion between PDF and TXT files
+- Supported uploading multiple files
+- Supported downloading multiple files and archieve it into a `.zip` file
+
+## !! Before Installment !!
 To begin working on the assignment, clone the repository to your local machine. Follow the instructions in [**CLONE_REPO.md**](CLONE_REPO.md) for a detailed guide on how to clone the repository.
 
-### Step 2: Familiarize Yourself with Git Commands
-
-Before you start making changes, it's crucial to understand basic Git commands. Refer to [**GIT_COMMAND_INSTRUCTION.md**](GIT_COMMAND_INSTRUCTION.md) for a comprehensive guide. Below are some essential commands for quick reference:
-
-```bash
-# Check the current branch
-git branch
-
-# Switch to a different branch
-git checkout branch-name
-
-# Check the status of your working directory
-git status
-
-# Add changes to the staging area
-git add file1 file2 ...    # Add specific files
-git add --all              # Add all changes
-
-# Commit the staged changes
-git commit -m "Your commit message here"
-
-# Push the code
-git push
-
-# Merge branches (Ensure you only merge your branch into 'testing' to avoid issues)
-git checkout testing
-git merge branch-name
-```
-
-### Step 3: Set up Linux Apache webserver
-
-
-can go and check the [**How to install Apache web server in a Docker container**](DOCKER_APACHE_SERVER.md).
-
-> ## Run Our Server Within Docker
+> ## Run Our Server With Docker
 ### Step 1: Open Docker
 
 Open your **Docker**. Make sure you **log into your Docker account**.
