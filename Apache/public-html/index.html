@@ -10,13 +10,6 @@
 
 <body class="index-page">
 
-    <!-- <header>
-        <img src="your-logo.png" alt="Your Logo">
-        <h1>Convert4U</h1>
-        <a href="#" class="active">All-in-One Mode</a>
-        <a href="#">PDF to Text</a>
-        <a href="#">Text to PDF</a>
-    </header> -->
     <header>
         <a href="index.html" class="logo-link">
             <div class="logo-container">
@@ -32,29 +25,17 @@
         </div>
     </header>
 
-    <!-- <nav>
-        <a href="#" class="active">All-in-One Mode</a>
-        <a href="#">PDF to Text</a>
-        <a href="#">Text to PDF</a>
-    </nav> -->
-        <!-- <div class="col-md-2 offset-md-2">
-            <div class="slider_heading">
-              <h2>
-                Convert <span>4U</span>
-              </h2>
-            </div>
-          </div> -->
+    
     <form action="upload.php" method="post" enctype="multipart/form-data">
 
         <div class="converter-section animate-fade-in">
 
-            <!-- <h2 style="font-size: 2em; margin: 10px;">Convert PDF and TXT file ALL at once!</h2> -->
+       
 
             <h2 style="font-size: 2em; margin: 10px;">
                 Convert <span id="typing-effect"></span>
             </h2>
-            <!-- <p>Just select all the file and Convert4U will help you to convert all</p> -->
-            <!-- <p style="margin: 10px 0;">Just select all the file and Convert4U will help you to convert all</p> -->
+      
             <div id="flash-container">
                 <p class="flash-text" style="white-space: nowrap;">No download</p>
                 <p class="flash-text" style="white-space: nowrap;">No installation</p>
@@ -71,17 +52,17 @@
                                 <span>Choose File</span>
                                 <input type="file" id="file" name="files[]" accept=".pdf, .txt" multiple required onchange="displaySelectedFiles()">
                             </label>
-                        <!-- <button type="submit">Convert</button> -->
+                       
                         </div>
                     
                         <!-- <label for="file">Select one or more files (PDF or TXT):</label> -->
                         <div id="drop-area-card">
                             <div id="drop-area" ondragover="allowDrop(event)" ondrop="dropHandler(event)" ondragleave="resetDropArea()" onchange="displaySelectedFiles()">
                                 📁 Drag and drop your files here
-                                <!-- <input type="file" name="files[]" accept=".pdf, .txt" multiple onchange="displaySelectedFiles()"> -->
+                              
                             </div>
                         </div>
-                        <!-- <button type="submit">Convert</button> -->
+                      
 
 
                 </div>
@@ -91,10 +72,10 @@
                         <p id="selectedFilesTitle">Selected Files:</p>
                     </div>
             </div>
-            <!-- <button type="submit" onclick="convertFiles()">Convert</button> -->
+           
         </div>
 
-        <!-- <button type="submit" onclick="convertFiles()">Convert</button> -->
+    
         <button type="submit" onclick="convertFiles()" class="custom-file-upload">
             <span>Convert</span>
         </button>
@@ -102,7 +83,6 @@
         
     
     
-            <!-- <div id="selectedFiles"></div> -->
         
 
         
@@ -123,11 +103,7 @@
         
         const flashTexts = document.querySelectorAll('.flash-text');
 
-        // function flashText(index) {
-        //     flashTexts.forEach((text, i) => {
-        //         text.style.display = i === index ? 'inline' : 'none';
-        //     });
-        // }
+     
         
         function getOffsetLeft(index) {
             // Add logic to determine the left offset based on the index
@@ -155,20 +131,7 @@
             });
         }
 
-        // function getPositionStyle(index) {
-        //     // Add logic to determine the position style based on the index
-        //     switch (index) {
-        //         case 0:
-        //             return 'left';
-        //         case 1:
-        //             return 'center';
-        //         case 2:
-        //             return 'right';
-        //         // Add more cases for additional positions
-        //         default:
-        //             return 'left'; // Default to left if index is not recognized
-        //     }
-        // }
+     
 
         function startFlashing() {
             let index = 0;
@@ -228,17 +191,7 @@
             dropArea.style.borderColor = '#42a5f5'; // Change the border color to a desired color
         }
 
-        // function dropHandler(event) {
-        //     event.preventDefault();
 
-        //     var input = document.querySelector('input[type="file"]');
-        //     var output = document.getElementById('selectedFiles');
-
-        //     for (var i = 0; i < event.dataTransfer.files.length; ++i) {
-                
-        //         output.innerHTML += '<p>' + event.dataTransfer.files[i].name + '</p>';
-        //     }
-        // }
 
         function dropHandler(event) {
             event.preventDefault();
@@ -299,23 +252,7 @@
             for (var i = 0; i < droppedFiles.length; ++i) {
                 formData.append('files[]', droppedFiles[i]);
             }
-            // for (var i = 0; i < droppedFiles.length; ++i) {
-                
-            //     output.innerHTML += '<p>' + "update" + droppedFiles[i].name + '</p>';
-            // }
-            
-            // // dev testing
-            // var formDataEntries = formData.entries();
-            // for (var pair of formDataEntries) {
-            //     output.innerHTML += '<p>' + pair[0] + ': ' + pair[1].name + '</p>';
-            // }
-
-            // output.innerHTML += '<p>' + "update" + event.dataTransfer.files[i].name + '</p>';
-
-            // // Append the dropped files to the FormData object
-            // for (var i = 0; i < droppedFiles.length; ++i) {
-            //     formData.append('files[]', droppedFiles[i]);
-            // }
+        
             
             // // // Append the dropped file to the FormData object
             // // formData.append('files[]', droppedFiles);
@@ -351,10 +288,7 @@
             // output.innerHTML = '';
         
             // Output all elements in the FormData object
-            // var formDataEntries = formData.entries();
-            // for (var pair of formDataEntries) {
-            //     output.innerHTML += '<p>' + pair[0] + ': ' + pair[1].name + '</p>';
-            // }
+   
         }
 
         function displaySuccessMessage() {
@@ -377,11 +311,7 @@
             dropArea.style.fontWeight = 'bold';
         }
 
-        // function resetDropArea() {
-        //     document.getElementById('drop-area').innerText = 'Drop files here or click to select';
-        //     dropArea.style.color = 'white';
-        //     dropArea.style.fontWeight = 'normal';
-        // }
+   
 
         function resetDropArea() {
             var dropArea = document.getElementById('drop-area');
