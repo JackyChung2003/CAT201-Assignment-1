@@ -1,4 +1,4 @@
-# CAT201-Assignment-1
+# CAT201 Assignment 1
 > **MEMBERS**
 
 **1.** `Jacky Chung Sze Yung`
@@ -21,6 +21,7 @@
 **GROUP 22**
 
 > VIDEO PRESENTATION
+
 https://youtu.be/BLD4o91EzPA
 
 > INTRODUCTION
