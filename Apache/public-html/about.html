@@ -10,13 +10,6 @@
 
 <body class="about-page">
 
-    <!-- <header>
-        <img src="your-logo.png" alt="Your Logo">
-        <h1>Convert4U</h1>
-        <a href="#" class="active">All-in-One Mode</a>
-        <a href="#">PDF to Text</a>
-        <a href="#">Text to PDF</a>
-    </header> -->
     <header>
         <a href="index.html" class="logo-link">
             <div class="logo-container">
@@ -31,19 +24,6 @@
             <a href="about.html" class="active" onclick="setActiveLink(this)">About</a>
         </div>
     </header>
-
-    <!-- <nav>
-        <a href="#" class="active">All-in-One Mode</a>
-        <a href="#">PDF to Text</a>
-        <a href="#">Text to PDF</a>
-    </nav> -->
-        <!-- <div class="col-md-2 offset-md-2">
-            <div class="slider_heading">
-              <h2>
-                Convert <span>4U</span>
-              </h2>
-            </div>
-          </div> -->
 
           <div>
             <h1 class="team-title">Our Perfect Team</h1>
@@ -89,11 +69,6 @@
         
         const flashTexts = document.querySelectorAll('.flash-text');
 
-        // function flashText(index) {
-        //     flashTexts.forEach((text, i) => {
-        //         text.style.display = i === index ? 'inline' : 'none';
-        //     });
-        // }
         
         function getOffsetLeft(index) {
             // Add logic to determine the left offset based on the index
@@ -121,20 +96,6 @@
             });
         }
 
-        // function getPositionStyle(index) {
-        //     // Add logic to determine the position style based on the index
-        //     switch (index) {
-        //         case 0:
-        //             return 'left';
-        //         case 1:
-        //             return 'center';
-        //         case 2:
-        //             return 'right';
-        //         // Add more cases for additional positions
-        //         default:
-        //             return 'left'; // Default to left if index is not recognized
-        //     }
-        // }
 
         function startFlashing() {
             let index = 0;
@@ -187,17 +148,6 @@
             dropArea.style.borderColor = '#42a5f5'; // Change the border color to a desired color
         }
 
-        // function dropHandler(event) {
-        //     event.preventDefault();
-
-        //     var input = document.querySelector('input[type="file"]');
-        //     var output = document.getElementById('selectedFiles');
-
-        //     for (var i = 0; i < event.dataTransfer.files.length; ++i) {
-                
-        //         output.innerHTML += '<p>' + event.dataTransfer.files[i].name + '</p>';
-        //     }
-        // }
 
         function dropHandler(event) {
             event.preventDefault();
@@ -225,12 +175,6 @@
             dropArea.style.color = 'lightgreen';
             dropArea.style.fontWeight = 'bold';
         }
-
-        // function resetDropArea() {
-        //     document.getElementById('drop-area').innerText = 'Drop files here or click to select';
-        //     dropArea.style.color = 'white';
-        //     dropArea.style.fontWeight = 'normal';
-        // }
 
         function resetDropArea() {
             var dropArea = document.getElementById('drop-area');
