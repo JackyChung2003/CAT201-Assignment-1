@@ -1,6 +1,6 @@
 # CAT201-Assignment-1
 
-> ## Get Started With Github Command
+## **[Get Started With Github Command]**
 ### Step 1: Clone the Repository
 
 To begin working on the assignment, clone the repository to your local machine. Follow the instructions in [**CLONE_REPO.md**](CLONE_REPO.md) for a detailed guide on how to clone the repository.
@@ -38,7 +38,8 @@ git merge branch-name
 
 Can go and check the [**How to install Apache web server in a Docker container**](DOCKER_APACHE_SERVER.md).
 
-> ## Run Our Server Within Docker
+## **[Run Our Server Within Docker]**
+
 ### Step 1: Open Docker
 
 Open your **Docker**. Make sure you log into your Docker account.
