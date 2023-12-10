@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="index.css">
 </head>
 
-<body class="index-page">
+<body class="text-to-pdf-page">
 
     <!-- <header>
         <img src="your-logo.png" alt="Your Logo">
@@ -25,9 +25,9 @@
             </div>
         </a>
         <div class="navigation-container">
-            <a href="index.html" class="active" onclick="setActiveLink(this)">All-in-One Mode</a>
+            <a href="index.html"  onclick="setActiveLink(this)">All-in-One Mode</a>
             <a href="pdfToText.html" onclick="setActiveLink(this)">PDF to Text</a>
-            <a href="textToPdf.html" onclick="setActiveLink(this)">Text to PDF</a>
+            <a href="textToPdf.html" class="active" onclick="setActiveLink(this)">Text to PDF</a>
             <a href="about.html" onclick="setActiveLink(this)">About</a>
         </div>
     </header>
@@ -51,14 +51,14 @@
             <!-- <h2 style="font-size: 2em; margin: 10px;">Convert PDF and TXT file ALL at once!</h2> -->
 
             <h2 style="font-size: 2em; margin: 10px;">
-                Convert <span id="typing-effect"></span>
+                Create PDFs Effortlessly: <span id="typing-effect"></span>
             </h2>
             <!-- <p>Just select all the file and Convert4U will help you to convert all</p> -->
             <!-- <p style="margin: 10px 0;">Just select all the file and Convert4U will help you to convert all</p> -->
             <div id="flash-container">
-                <p class="flash-text" style="white-space: nowrap;">No download</p>
-                <p class="flash-text" style="white-space: nowrap;">No installation</p>
-                <p class="flash-text" style="white-space: nowrap;">No hassle</p>
+                <p class="flash-text" style="white-space: nowrap;">Print-Ready</p>
+                <p class="flash-text" style="white-space: nowrap;">Universal Accessibility</p>
+                <p class="flash-text" style="white-space: nowrap;">Security</p>
             </div>
 
             <div class="converter-container">
@@ -69,7 +69,7 @@
                             <!-- <input type="file" id="file" name="files[]" accept=".pdf, .txt" multiple required onchange="displaySelectedFiles()"> -->
                             <label for="file" class="custom-file-upload">
                                 <span>Choose File</span>
-                                <input type="file" id="file" name="files[]" accept=".pdf, .txt" multiple required onchange="displaySelectedFiles()">
+                                <input type="file" id="file" name="files[]" accept=".txt" multiple required onchange="displaySelectedFiles()">
                             </label>
                         <!-- <button type="submit">Convert</button> -->
                         </div>
@@ -181,19 +181,12 @@
         startFlashing();
 
         document.addEventListener("DOMContentLoaded", function () {
-            var text = "PDF and TXT file ALL at once!";
+            var text = "Turn Text Files into Polished Documents!";
             var speed = 100; // Adjust the typing speed (milliseconds)
 
             function typeWriter(text, index) {
                 if (index < text.length) {
-                    // document.getElementById("typing-effect").innerHTML += text.charAt(index);
-                    if (text.charAt(index) === 'A' || text.charAt(index) === 'L') {
-                        // document.getElementById("typing-effect").innerHTML += '<span style="color: #ffffff;">' + text.charAt(index) + '</span>';
-                        document.getElementById("typing-effect").innerHTML += '<span style="color: #00ff00;">' + text.charAt(index) + '</span>';
-
-                    } else {
-                        document.getElementById("typing-effect").innerHTML += text.charAt(index);
-                    }
+                    document.getElementById("typing-effect").innerHTML += text.charAt(index);
                     index++;
                     setTimeout(function () {
                         typeWriter(text, index);
@@ -224,7 +217,7 @@
             // document.getElementById('drop-area').innerText = 'drop your file to here';
 
             var dropArea = document.getElementById('drop-area');
-            dropArea.innerText = 'Drop your files here like magic! ✨';
+            dropArea.innerText = 'Drop your TXT files here like magic! ✨';
             dropArea.style.borderColor = '#42a5f5'; // Change the border color to a desired color
         }
 
@@ -246,9 +239,10 @@
             var input = document.querySelector('input[type="file"]');
             var output = document.getElementById('selectedFiles');
             var droppedFiles = event.dataTransfer.files;
-
+            
+            // Check if any of the dropped files are not PDF files
             for (var i = 0; i < droppedFiles.length; ++i) {
-                if (droppedFiles[i].type !== 'application/pdf' && droppedFiles[i].type !== 'text/plain') {
+                if (droppedFiles[i].type !== 'text/plain') {
                     displayFailMessage();
                     // Display an error message for non-PDF files
                     setTimeout(function () {
@@ -263,10 +257,6 @@
 
             for (var i = 0; i < event.dataTransfer.files.length; ++i) {
                 var file = event.dataTransfer.files[i];
-
-                // Update the input element with the dropped file
-                // updateInputFiles(file);
-
                 output.innerHTML += '<p>' + event.dataTransfer.files[i].name + '</p>';
             }
             
@@ -299,30 +289,6 @@
             for (var i = 0; i < droppedFiles.length; ++i) {
                 formData.append('files[]', droppedFiles[i]);
             }
-            // for (var i = 0; i < droppedFiles.length; ++i) {
-                
-            //     output.innerHTML += '<p>' + "update" + droppedFiles[i].name + '</p>';
-            // }
-            
-            // // dev testing
-            // var formDataEntries = formData.entries();
-            // for (var pair of formDataEntries) {
-            //     output.innerHTML += '<p>' + pair[0] + ': ' + pair[1].name + '</p>';
-            // }
-
-            // output.innerHTML += '<p>' + "update" + event.dataTransfer.files[i].name + '</p>';
-
-            // // Append the dropped files to the FormData object
-            // for (var i = 0; i < droppedFiles.length; ++i) {
-            //     formData.append('files[]', droppedFiles[i]);
-            // }
-            
-            // // // Append the dropped file to the FormData object
-            // // formData.append('files[]', droppedFiles);
-            
-            // Update the input element's FormData
-            // input.formData = formData.getAll('files[]');
-            // input.files = formData.getAll('files[]');
 
              // Create a new file input element
             var newInput = document.createElement('input');
@@ -346,15 +312,6 @@
             // Replace the existing input element with the new one
             input.parentNode.replaceChild(newInput, input);
             
-        
-            // Clear the output
-            // output.innerHTML = '';
-        
-            // Output all elements in the FormData object
-            // var formDataEntries = formData.entries();
-            // for (var pair of formDataEntries) {
-            //     output.innerHTML += '<p>' + pair[0] + ': ' + pair[1].name + '</p>';
-            // }
         }
 
         function displaySuccessMessage() {
@@ -362,17 +319,11 @@
             dropArea.innerText = 'Files successfully added! ✔️';
             dropArea.style.color = 'lightgreen';
             dropArea.style.fontWeight = 'bold';
-
-            // // Call updateInputFiles to ensure the input element is updated
-            // updateInputFiles([]);
-                    
-            // // Call convertFiles after files are dropped and success message is displayed
-            // convertFiles();
         }
 
         function displayFailMessage() {
             var dropArea = document.getElementById('drop-area');
-            dropArea.innerText = 'Only PDF or TXT files are allowed! ❌';
+            dropArea.innerText = 'Only TXT files are allowed! ❌';
             dropArea.style.color = 'red';
             dropArea.style.fontWeight = 'bold';
         }
@@ -424,7 +375,6 @@
                 // Handle errors, if needed
             });
         }
-
     </script>
 </body>
 

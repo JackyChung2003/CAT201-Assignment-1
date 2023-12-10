@@ -1,0 +1,398 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* background-color: #121212; */
+    /* background: linear-gradient(to bottom, #121212 100%, #99cc00 100%); */
+    /* background: linear-gradient(to right bottom, #121212 60% , #DDFBF5) ; W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background: linear-gradient(to bottom, #121212 60% , #DDFBF5) ; */
+    backdrop-filter: blur(50px); /* Adjust the blur radius as needed */
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* margin: 0;
+    padding: 0; */
+}
+
+body.index-page {
+    background: linear-gradient(to bottom, #121212 60% , #DDFBF5) ;
+}
+
+body.pdf-to-text-page {
+    background: linear-gradient(to left bottom, #121212 60% , #DDFBF5) ;
+}
+
+body.text-to-pdf-page {
+    background: linear-gradient(to right bottom, #121212 60% , #DDFBF5) ;
+}
+
+body.about-page {
+    background: linear-gradient(to bottom, #121212 60% , #DDFBF5) ;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+.flash-text {
+    display: none;
+    font-size: 1.5em;
+    animation: flash 1s infinite;
+}
+
+@keyframes flash {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+header {
+    display: flex;
+    justify-content: flex-start;
+    /* justify-content: space-between; */
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 10px;
+    
+    /* text-align: left; */
+}
+
+.logo-link {
+    text-decoration: none;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    height: 50px;
+    width: 50px;
+    /* margin-right: 10px; */
+    vertical-align: middle;
+    /* border: 1px solid #61dafb; */
+    margin-left: 10px;
+}
+
+.logo-container h1 {
+    margin: 0;
+    font-size: 2em;
+    /* font-size: 3em; Adjust font size as needed */
+    background: linear-gradient(to right, #FCEE0C, #FCEE0C); /* Adjust the colors as needed */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* color: #61dafb; */
+    /* border: 1px solid #ffffff; */
+    display: inline-block; /* Ensures that the text shadow respects the inline element */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adjust the shadow offsets, blur, and color as needed */
+    margin-left: 10px;
+}
+
+
+/* header img {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+header h1 {
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+    color: #61dafb;
+} */
+
+.navigation-container {
+    display: flex;
+    /* margin: 0 200px; */
+    margin: 0 50px;
+    white-space: nowrap;
+
+    /* border: 1px solid #ffffff; */
+}
+
+.navigation-container a {
+    color: #99cc00;
+    text-decoration: none;
+    font-weight: semi-bold;
+    padding: 10px 20px;
+    margin: 0 50px;
+    transition: color 0.3s, border 0.3s, font-size 0.3s, font-weight 0.1s;
+    white-space: nowrap;
+    /* border: 1px solid #ffffff; */
+}
+
+.navigation-container a.active {
+    /* background-color: #555; */
+    color: #bfff00; /* Lighter color for active state */
+    font-size: 1.05em;
+    font-weight: bold;
+    /* border: 1px solid #ffffff; */
+}
+
+.navigation-container a:hover {
+    font-size: 1.05em; 
+    font-weight: bold;
+    border: 1px solid #888; /* Lighter border on hover */
+    background-color: #555;
+    text-decoration: underline;
+}
+
+
+/* .slider_heading {
+    -webkit-transform: rotate(270.5deg) scaleX(1);
+            transform: rotate(270.5deg) scaleX(-1);
+    position: absolute;
+    left: -150px;
+    /* top: -25px; 
+    top: 0px;
+  } */
+  
+/* .slider_heading h2 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 5rem;
+    text-transform: uppercase;
+    text-orientation: upright;
+    font-weight: bold;
+    color: #ffffff;
+  } */
+
+.converter-section {
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    /* margin-top: 50px; */
+    display: flex;
+    
+}
+
+.converter-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%; /* Adjust the width as needed */
+    margin: 20px 0;
+}
+
+.converter-input-section,
+.converter-output-section {
+    flex: 1;
+    
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+
+
+#drop-area-card {
+    /* border: 2px dashed #aaaaaa; */
+    display: flex;
+    padding: 1px 1px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    /* line-height: 100px; Center content vertically */
+    margin: 20px 20px; /* Adjust margin as needed */
+    cursor: pointer;
+    /* border-radius: 10px; Add round corners */
+    /* background-color: #f2f2f2; Add a background color */
+    /* background-color: rgba(242, 242, 242, 0.5); Add a background color with 50% opacity */
+    
+    background: rgba(255, 255, 255, 0.24);
+
+    
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.8px);
+    -webkit-backdrop-filter: blur(4.8px);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+#selected-files-section {
+    display: flex;
+    flex-direction: row; /* Align children in a column */
+    align-items: center; /* Center items horizontally */
+    justify-content: space-evenly; /* Distribute items evenly */
+    
+}
+
+
+.custom-file-upload,
+button.custom-file-upload {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    border-radius: 5px;
+}
+
+.custom-file-upload span,
+button.custom-file-upload span {
+    display: inline-block;
+    padding: 6px 12px;
+}
+
+.custom-file-upload input,
+button.custom-file-upload input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.custom-file-upload:hover {
+    background-color: rgba(255, 255, 255, 0.24); /* Change the background color on hover */
+}
+
+#drop-area {
+    /* border: 2px dashed #aaaaaa; */
+    display: flex;
+    padding: 20px;
+    width: 360px; /* Set the desired width for the drop area */
+    height: 150px; /* Set the desired height for the drop area */
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    /* line-height: 100px; Center content vertically */
+    margin: 20px auto; /* Adjust margin as needed */
+    /* cursor: pointer; */
+    /* border-radius: 10px; Add round corners */
+    /* background-color: #f2f2f2; Add a background color */
+    /* background-color: rgba(242, 242, 242, 0.5); Add a background color with 50% opacity */
+    border: 1px dashed #ffffff;
+    border-radius: 16px;
+
+}
+
+/* Style the text inside the drop area */
+#drop-area p {
+    margin: 0;
+    font-size: 16px;
+    color: #555555;
+}
+
+/* #pdf-preview {
+    max-width: 100%;
+    max-height: 100%;
+    margin-top: 10px;
+}
+
+#txt-preview {
+    max-width: 100%;
+    max-height: 100%;
+    margin-top: 10px;
+} */
+
+
+
+#selectedFiles {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#selectedFiles p {
+    margin: 5px;
+}
+
+#selectedFilesTitle {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #1a1a1a;
+    color: #888;
+    /* padding: 10px; */
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+    
+    position: fixed;
+    bottom: 0;
+
+    padding: 5px; /* Adjust the padding to make the footer less tall */
+    height: 40px; /* Adjust the height to make the footer less tall */
+    display: flex;
+    align-items: center; /* Vertical center alignment */
+    justify-content: center; /* Horizontal center alignment */
+}
+
+.team-title {
+    font-size: 2.0em;
+    margin: 20px;
+    text-align: center;
+}
+
+.member-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.member-card {
+    /* background-color: #fff; */
+    border-radius: 30px;
+    padding: 20px;
+    margin: 10px;
+    width: 250px;
+
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    text-align: center;
+}
+
+.member-card img {
+    /* width: 250px; */
+    height: 250px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.member-card h2 {
+    font-size: 1.3em;
+    margin-bottom: 5px;
+    
+    white-space: nowrap;
+    
+}
+
+.member-card p {
+    color: #ffffff;
+    margin: 0;
+    font-weight: 500;
+}
