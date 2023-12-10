@@ -1,69 +1,256 @@
-<?php
-// // Check if the filename is provided in the query parameter
-if (isset($_GET['output_file'])) {
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAT201 Assignment 1</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body class="about-page">
+
+    <!-- <header>
+        <img src="your-logo.png" alt="Your Logo">
+        <h1>Convert4U</h1>
+        <a href="#" class="active">All-in-One Mode</a>
+        <a href="#">PDF to Text</a>
+        <a href="#">Text to PDF</a>
+    </header> -->
+    <header>
+        <a href="index.html" class="logo-link">
+            <div class="logo-container">
+                <img src="Picture/Icon.png" alt="Convert4U Icon">
+                <h1>Convert4U</h1>
+            </div>
+        </a>
+        <div class="navigation-container">
+            <a href="index.html"  onclick="setActiveLink(this)">All-in-One Mode</a>
+            <a href="pdfToText.html" onclick="setActiveLink(this)">PDF to Text</a>
+            <a href="textToPdf.html"  onclick="setActiveLink(this)">Text to PDF</a>
+            <a href="about.html" class="active" onclick="setActiveLink(this)">About</a>
+        </div>
+    </header>
+
+    <!-- <nav>
+        <a href="#" class="active">All-in-One Mode</a>
+        <a href="#">PDF to Text</a>
+        <a href="#">Text to PDF</a>
+    </nav> -->
+        <!-- <div class="col-md-2 offset-md-2">
+            <div class="slider_heading">
+              <h2>
+                Convert <span>4U</span>
+              </h2>
+            </div>
+          </div> -->
+
+          <div>
+            <h1 class="team-title">Our Perfect Team</h1>
+          </div>
+          <section class="member-section">
+            <div class="member-card">
+                <img src="Picture/Jacky.png" alt="Member 1">
+                <h2>Jacky Chung Sze Yung</h2>
+                <p>Team Leader</p>
+                <p>Matrix Number: 163326</p>
+            </div>
     
-    $encodedFiles = $_GET['output_file'];
-    // echo "encodedFiles: " . $encodedFiles . "<br>";
+            <div class="member-card">
+                <img src="Picture/Axler.png" alt="Member 2">
+                <h2>Axler Chin Shun Yuan</h2>
+                <p>Team Member 1</p>
+                <p>Matrix Number: 162331</p>
+            </div>
 
-    $decodedFiles = json_decode(htmlspecialchars_decode($encodedFiles), true);
-    // echo "decodedFiles: " . $decodedFiles . "<br>";
+            <div class="member-card">
+                <img src="Picture/Andrew.png" alt="Member 2">
+                <h2>Andrew Tee Wei Xiong</h2>
+                <p>Team Member 2</p>
+                <p>Matrix Number: 164761</p>
+            </div>
 
-    // Decode the URL-encoded string
-    // $decodedFiles = urldecode($encodedFiles);
-    // echo "decodedFiles: " . $decodedFiles . "<br>";
+            <div class="member-card">
+                <img src="Picture/HongJun.png" alt="Member 2">
+                <h2>Teh Hong Jun</h2>
+                <p>Team Member 3</p>
+                <p>Matrix Number: 164723</p>
+            </div>
+    
+    
+        </section>
 
-    // Unserialize the string back into an array
-    $convertedFiles = unserialize($decodedFiles);
-    // echo "convertedFiles: " . $convertedFiles . "<br>";
-    // print_r($convertedFiles);
+    <footer>
+        <p>© 2023 CAT201 Group 22. All rights reserved.</p>
+        <!-- Additional information about your team can be added here -->
+    </footer>
 
-    // Set the path to the directory where the files are stored
-    $outputDirectory = 'Output_Files/';
+    <script>
+        
+        const flashTexts = document.querySelectorAll('.flash-text');
 
-    // Create a zip archive
-    // $zip = new ZipArchive();
-    $zip = new ZipArchive;
-    $zipFilename = $outputDirectory . 'converted_files.zip';
-
-    if ($zip->open($zipFilename, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
-        foreach ($convertedFiles as $filename) {
-            // Set the full path to the file
-            $filepath = $outputDirectory . $filename;
-
-            // Check if the file exists
-            if (file_exists($filepath)) {
-                // Add the file to the zip archive
-                $zip->addFile($filepath, $filename);
-                // echo "filepath: " . $filepath . "<br>";
-                // echo "filename: " . $filename . "<br>";
-            } else {
-                // If the file does not exist, display an error message
-                echo 'File not found: ' . $filename . '<br>';
+        // function flashText(index) {
+        //     flashTexts.forEach((text, i) => {
+        //         text.style.display = i === index ? 'inline' : 'none';
+        //     });
+        // }
+        
+        function getOffsetLeft(index) {
+            // Add logic to determine the left offset based on the index
+            switch (index) {
+                case 0:
+                    return '-700px';
+                case 1:
+                    return '-0%'; // Centered offset
+                case 2:
+                    return '400%'; // Left-aligned offset
+                // Add more cases for additional positions
+                default:
+                    return '0px'; // Default to 0px if index is not recognized
             }
         }
 
-        // Close the zip archive
-        $zip->close();
+        function flashText(index) {
+            flashTexts.forEach((text, i) => {
+                if (i === index) {
+                    text.style.display = 'inline';
+                    text.style.marginLeft = getOffsetLeft(index);
+                } else {
+                    text.style.display = 'none';
+                }
+            });
+        }
 
-        // Set appropriate headers for zip file download
-        header('Content-Type: application/zip');
-        header('Content-Disposition: attachment; filename="' . basename($zipFilename) . '"');
-        header('Content-Length: ' . filesize($zipFilename));
+        // function getPositionStyle(index) {
+        //     // Add logic to determine the position style based on the index
+        //     switch (index) {
+        //         case 0:
+        //             return 'left';
+        //         case 1:
+        //             return 'center';
+        //         case 2:
+        //             return 'right';
+        //         // Add more cases for additional positions
+        //         default:
+        //             return 'left'; // Default to left if index is not recognized
+        //     }
+        // }
 
-        // Read and output the zip file content
-        readfile($zipFilename);
+        function startFlashing() {
+            let index = 0;
+            setInterval(() => {
+                flashText(index);
+                index = (index + 1) % flashTexts.length;
+            }, 2000); // Change the interval as needed (milliseconds)
+        }
 
-        // Remove the zip file after download
-        unlink($zipFilename);
+        startFlashing();
 
-        // Exit to prevent any further output
-        exit;
-    } else {
-        echo "Error creating zip archive";
-    }
-} else {
-    // If no filename is provided, display an error message
-    echo 'Filename not provided.';
-}
-?>
+        document.addEventListener("DOMContentLoaded", function () {
+            var text = "PDF and TXT file ALL at once!";
+            var speed = 100; // Adjust the typing speed (milliseconds)
 
+            function typeWriter(text, index) {
+                if (index < text.length) {
+                    document.getElementById("typing-effect").innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(function () {
+                        typeWriter(text, index);
+                    }, speed);
+                }
+            }
+
+            // Trigger the typing effect on page load
+            typeWriter(text, 0);
+        });
+        
+
+
+
+        function setActiveLink(clickedLink) {
+            // Remove active class from all links
+            var links = document.querySelectorAll('.navigation-container a');
+            links.forEach(function (link) {
+                link.classList.remove('active');
+            });
+        
+            // Add active class to the clicked link
+            clickedLink.classList.add('active');
+        }
+
+        function allowDrop(event) {
+            event.preventDefault();
+            // document.getElementById('drop-area').innerText = 'drop your file to here';
+
+            var dropArea = document.getElementById('drop-area');
+            dropArea.innerText = 'Drop your files here like magic! ✨';
+            dropArea.style.borderColor = '#42a5f5'; // Change the border color to a desired color
+        }
+
+        // function dropHandler(event) {
+        //     event.preventDefault();
+
+        //     var input = document.querySelector('input[type="file"]');
+        //     var output = document.getElementById('selectedFiles');
+
+        //     for (var i = 0; i < event.dataTransfer.files.length; ++i) {
+                
+        //         output.innerHTML += '<p>' + event.dataTransfer.files[i].name + '</p>';
+        //     }
+        // }
+
+        function dropHandler(event) {
+            event.preventDefault();
+
+            var input = document.querySelector('input[type="file"]');
+            var output = document.getElementById('selectedFiles');
+
+            for (var i = 0; i < event.dataTransfer.files.length; ++i) {
+                output.innerHTML += '<p>' + event.dataTransfer.files[i].name + '</p>';
+            }
+
+            // Display success message
+            // output.innerHTML += '<p style="color: green;">File(s) added successfully!</p>';
+            displaySuccessMessage();
+
+            // Reset drop area text after a short delay
+            setTimeout(function () {
+                resetDropArea();
+            }, 2000);
+        }
+
+        function displaySuccessMessage() {
+            var dropArea = document.getElementById('drop-area');
+            dropArea.innerText = 'Files successfully added! ✔️';
+            dropArea.style.color = 'lightgreen';
+            dropArea.style.fontWeight = 'bold';
+        }
+
+        // function resetDropArea() {
+        //     document.getElementById('drop-area').innerText = 'Drop files here or click to select';
+        //     dropArea.style.color = 'white';
+        //     dropArea.style.fontWeight = 'normal';
+        // }
+
+        function resetDropArea() {
+            var dropArea = document.getElementById('drop-area');
+            dropArea.innerText = '📁 Drag and drop your files here';
+            dropArea.style.color = 'white'; // Reset the color to default
+            dropArea.style.fontWeight = 'normal'; // Reset the font weight to normal
+            dropArea.style.borderColor = '#aaaaaa';
+        }
+
+
+        function displaySelectedFiles() {
+            var input = document.querySelector('input[type="file"]');
+            var output = document.getElementById('selectedFiles');
+            // output.innerHTML = '<p>Selected Files:</p>';
+            
+            for (var i = 0; i < input.files.length; ++i) {
+                output.innerHTML += '<p>' + input.files[i].name + '</p>';
+            }
+        }
+    </script>
+</body>
+
+</html>
