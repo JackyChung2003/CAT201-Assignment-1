@@ -1,5 +1,4 @@
 # CAT201-Assignment-1
-
 To ensure Docker can run on your computer, follow the instructions below. Here are some quick references:
 
 - [**Amazing video about how to install Apache web server in Docker container**](https://www.youtube.com/watch?v=mO93QRna8ws&ab_channel=Abstractprogrammer)

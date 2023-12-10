@@ -1,6 +1,5 @@
 # CAT201-Assignment-1
 
-
 ## Step 1: Clone the Repository
 
 To begin working on the assignment, clone the repository to your local machine. Follow the instructions in [**CLONE_REPO.md**](CLONE_REPO.md) for a detailed guide on how to clone the repository.

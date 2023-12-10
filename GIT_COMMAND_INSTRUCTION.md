@@ -1,5 +1,4 @@
 # Introduction to Git - Quick Reference
-
 ## Checking Status
 
 Check the status of your repository:
