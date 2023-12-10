@@ -1,0 +1,13 @@
+version: '3'
+services:
+  apache:
+    container_name: apache-service
+    build: .
+    ports:
+      - "7225:80"
+    volumes:
+      - ./public-html:/usr/local/apache2/htdocs/
+      - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./public-html:/var/www/html/
+      - ./public-html/pdf2txt.jar:/var/www/html/pdf2txt.jar
+      - ./public-html/txt2pdf.jar:/var/www/html/txt2pdf.jar

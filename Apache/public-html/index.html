@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAT201 Assignment 1</title>
+    <style>
+      body {
+        background-color: #333;
+        color: #fff;
+        font-family: Arial, sans-serif;
+      }
+
+      button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>PDF to Text Converter</h1>
+
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+      <label for="file">Select one or more files (PDF or TXT):</label>
+      <input
+        type="file"
+        name="files[]"
+        accept=".pdf, .txt"
+        multiple
+        required
+        onchange="displaySelectedFiles()"
+      />
+      <button type="submit">Convert to Text</button>
+    </form>
+
+    <div id="selectedFiles"></div>
+
+    <script>
+      function displaySelectedFiles() {
+        var input = document.querySelector('input[type="file"]');
+        var output = document.getElementById("selectedFiles");
+        output.innerHTML = "<p>Selected Files:</p>";
+
+        for (var i = 0; i < input.files.length; ++i) {
+          output.innerHTML += "<p>" + input.files[i].name + "</p>";
+        }
+      }
+    </script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
