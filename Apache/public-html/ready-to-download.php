@@ -27,16 +27,11 @@
             <h1>Your File is <span class="glow">Ready</span></h1>
             <h2>to Download!</h2>
             <p>Click the button below to download your file. Please note that the file will be downloaded as a zip file.</p>
-
-
-
-
                 <div class="button" id="button-Download">
                     <?php
                     // Assuming $convertedFiles is an array you want to pass
                     $convertedFiles = $_GET['converted_file'];
                     $encodedFiles = json_encode($convertedFiles);
-
                     echo '
                     <p><a href="download.php?output_file=' . urlencode($encodedFiles) . '">Download</a></p>'
                     ?>

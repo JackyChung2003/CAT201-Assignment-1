@@ -98,11 +98,12 @@ header {
     /* font-size: 3em; Adjust font size as needed */
     background: linear-gradient(to right, #FCEE0C, #FCEE0C); /* Adjust the colors as needed */
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     /* color: #61dafb; */
     /* border: 1px solid #ffffff; */
     display: inline-block; /* Ensures that the text shadow respects the inline element */
-    .text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adjust the shadow offsets, blur, and color as needed */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adjust the shadow offsets, blur, and color as needed */
     margin-left: 10px;
 }
 

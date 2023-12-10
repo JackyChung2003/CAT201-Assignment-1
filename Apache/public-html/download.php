@@ -136,4 +136,3 @@ if (isset($_GET['output_file'])) {
     echo 'Filename not provided.';
 }
 ?>
-
