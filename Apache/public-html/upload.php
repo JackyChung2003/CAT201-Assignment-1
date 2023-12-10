@@ -1,33 +1,3 @@
-<!-- // Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Handle file upload
-    $uploadDir = "uploads/";
-    $uploadedFile = $uploadDir . basename($_FILES["pdfFile"]["name"]);
-    $uploadOk = 1;
-    $fileType = strtolower(pathinfo($uploadedFile, PATHINFO_EXTENSION));
-    // Check if the file is a PDF
-    if ($fileType != "pdf") {
-        echo "<p style='color: red;'>Only PDF files are allowed.</p>";
-        $uploadOk = 0;
-    }
-    // Check if file already exists
-    if (file_exists($uploadedFile)) {
-        echo "<p style='color: red;'>File already exists.</p>";
-        $uploadOk = 0;
-    }
-    // Upload the file
-    if ($uploadOk) {
-        if (move_uploaded_file($_FILES["pdfFile"]["tmp_name"], $uploadedFile)) {
-            echo "<p style='color: green;'>File uploaded successfully.</p>";
-         
-            // TODO: Call Java application to convert PDF to text
-            // Use exec() function to execute the Java application
-        } else {
-            echo "<p style='color: red;'>Error uploading file.</p>";
-        }
-    }
-} -->
-
 <?php
 // Specify the directory where uploaded files will be stored
 $uploadDirectory = 'Upload_Files/';
