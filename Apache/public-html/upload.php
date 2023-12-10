@@ -111,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // get the file name without extension(no .pdf or .txt)
             // $upload_file_name_without_extension = substr($upload_file_name_without_space, 0, -3);
             $upload_file_name_without_extension = pathinfo($upload_file_name, PATHINFO_FILENAME);
-            echo $upload_file_name_without_extension;
+            // echo $upload_file_name_without_extension;
             // get the file temporary name
             // $upload_file_tmp_name = $_FILES['files']['tmp_name'];
             $upload_file_tmp_name = $_FILES['files']['tmp_name'][$key];
@@ -179,7 +179,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     //     echo "Java command executed successfully: " . implode("\n", $output);
                     // }
 
-                    $command = "java -jar /var/www/CAT201-Assignment-1/pdf2txt.jar $convert_path $output_path";
+                    $command = "java -jar /var/www/html/pdf2txt.jar $convert_path $output_path";
                     // echo "Executing command: $command";
                     $output = [];
                     $returnCode = 0;
@@ -227,7 +227,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                     // convert file to CSV file using a JAR file
                     // exec("java -jar txttopdf.jar $convert_path $output_path");
-                    $command = "java -jar /var/www/CAT201-Assignment-1/txt2pdf.jar $convert_path $output_path";
+                    $command = "java -jar /var/www/html/txt2pdf.jar $convert_path $output_path";
                     $output = [];
                     $returnCode = 0;
                     exec($command, $output, $returnCode);
@@ -243,7 +243,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 else {
                     // if an error occurred during uploading
                     // header('Location: error.php'); // redirect to error page if an error occurs
-                    echo 'Redirect to error page (error.php)';
+                    // echo 'Redirect to error page (error.php)';
                     header('Location: error.php');
                 }
             }
