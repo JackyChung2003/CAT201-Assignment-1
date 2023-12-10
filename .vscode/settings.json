@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "PDF_To_Text\\public-html\\project\\lib\\pdfbox-app-3.0.1.jar"
+    ],
+    "java.configuration.updateBuildConfiguration": "automatic"
+}
