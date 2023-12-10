@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAT201 Assignment 1</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body class="pdf-to-text-page">
+
+    <!-- <header>
+        <img src="your-logo.png" alt="Your Logo">
+        <h1>Convert4U</h1>
+        <a href="#" class="active">All-in-One Mode</a>
+        <a href="#">PDF to Text</a>
+        <a href="#">Text to PDF</a>
+    </header> -->
+    <header>
+        <a href="index.html" class="logo-link">
+            <div class="logo-container">
+                <img src="Picture/Icon.png" alt="Convert4U Icon">
+                <h1>Convert4U</h1>
+            </div>
+        </a>
+        <div class="navigation-container">
+            <a href="index.html"  onclick="setActiveLink(this)">All-in-One Mode</a>
+            <a href="pdfToText.html" class="active" onclick="setActiveLink(this)">PDF to Text</a>
+            <a href="textToPdf.html" onclick="setActiveLink(this)">Text to PDF</a>
+            <a href="about.html" onclick="setActiveLink(this)">About</a>
+        </div>
+    </header>
+
+    <!-- <nav>
+        <a href="#" class="active">All-in-One Mode</a>
+        <a href="#">PDF to Text</a>
+        <a href="#">Text to PDF</a>
+    </nav> -->
+        <!-- <div class="col-md-2 offset-md-2">
+            <div class="slider_heading">
+              <h2>
+                Convert <span>4U</span>
+              </h2>
+            </div>
+          </div> -->
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+
+        <div class="converter-section animate-fade-in">
+
+            <!-- <h2 style="font-size: 2em; margin: 10px;">Convert PDF and TXT file ALL at once!</h2> -->
+
+            <h2 style="font-size: 2em; margin: 10px;">
+                PDFs to Plain Text: <span id="typing-effect"></span>
+            </h2>
+            <!-- <p>Just select all the file and Convert4U will help you to convert all</p> -->
+            <!-- <p style="margin: 10px 0;">Just select all the file and Convert4U will help you to convert all</p> -->
+            <div id="flash-container">
+                <p class="flash-text" style="white-space: nowrap;">Text Analysis</p>
+                <p class="flash-text" style="white-space: nowrap;">Compact Size</p>
+                <p class="flash-text" style="white-space: nowrap;">Time Efficiency</p>
+            </div>
+
+            <div class="converter-container">
+                <div class="converter-input-section">
+
+                        <div id="selected-files-section">
+                            <label for="file">Select one or more files: </label>
+                            <!-- <input type="file" id="file" name="files[]" accept=".pdf, .txt" multiple required onchange="displaySelectedFiles()"> -->
+                            <label for="file" class="custom-file-upload">
+                                <span>Choose File</span>
+                                <input type="file" id="file" name="files[]" accept=".pdf" multiple required onchange="displaySelectedFiles()">
+                            </label>
+                        <!-- <button type="submit">Convert</button> -->
+                        </div>
+                    
+                        <!-- <label for="file">Select one or more files (PDF or TXT):</label> -->
+                        <div id="drop-area-card">
+                            <div id="drop-area" ondragover="allowDrop(event)" ondrop="dropHandler(event)" ondragleave="resetDropArea()" onchange="displaySelectedFiles()">
+                                📁 Drag and drop your files here
+                                <!-- <input type="file" name="files[]" accept=".pdf, .txt" multiple onchange="displaySelectedFiles()"> -->
+                            </div>
+                        </div>
+                        <!-- <button type="submit">Convert</button> -->
+
+
+                </div>
+
+                <div class="converter-output-section">
+                    <div id="selectedFiles">
+                        <p id="selectedFilesTitle">Selected Files:</p>
+                    </div>
+            </div>
+            <!-- <button type="submit" onclick="convertFiles()">Convert</button> -->
+        </div>
+
+        <!-- <button type="submit" onclick="convertFiles()">Convert</button> -->
+        <button type="submit" onclick="convertFiles()" class="custom-file-upload">
+            <span>Convert</span>
+        </button>
+    </form>
+        
+    
+    
+            <!-- <div id="selectedFiles"></div> -->
+        
+
+        
+    
+
+    <section>
+        <!-- Your drag and drop area can be added here -->
+        
+        <!-- Instructions for using the application can be placed here -->
+    </section>
+
+    <footer>
+        <p>© 2023 CAT201 Group 22. All rights reserved.</p>
+        <!-- Additional information about your team can be added here -->
+    </footer>
+
+    <script>
+        
+        const flashTexts = document.querySelectorAll('.flash-text');
+
+        // function flashText(index) {
+        //     flashTexts.forEach((text, i) => {
+        //         text.style.display = i === index ? 'inline' : 'none';
+        //     });
+        // }
+        
+        function getOffsetLeft(index) {
+            // Add logic to determine the left offset based on the index
+            switch (index) {
+                case 0:
+                    return '-700px';
+                case 1:
+                    return '-0%'; // Centered offset
+                case 2:
+                    return '250%'; // Left-aligned offset
+                // Add more cases for additional positions
+                default:
+                    return '0px'; // Default to 0px if index is not recognized
+            }
+        }
+
+        function flashText(index) {
+            flashTexts.forEach((text, i) => {
+                if (i === index) {
+                    text.style.display = 'inline';
+                    text.style.marginLeft = getOffsetLeft(index);
+                } else {
+                    text.style.display = 'none';
+                }
+            });
+        }
+
+        // function getPositionStyle(index) {
+        //     // Add logic to determine the position style based on the index
+        //     switch (index) {
+        //         case 0:
+        //             return 'left';
+        //         case 1:
+        //             return 'center';
+        //         case 2:
+        //             return 'right';
+        //         // Add more cases for additional positions
+        //         default:
+        //             return 'left'; // Default to left if index is not recognized
+        //     }
+        // }
+
+        function startFlashing() {
+            let index = 0;
+            setInterval(() => {
+                flashText(index);
+                index = (index + 1) % flashTexts.length;
+            }, 2000); // Change the interval as needed (milliseconds)
+        }
+
+        startFlashing();
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var text = "Simplifying Conversion for Everyone!";
+            var speed = 100; // Adjust the typing speed (milliseconds)
+
+            function typeWriter(text, index) {
+                if (index < text.length) {
+                    document.getElementById("typing-effect").innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(function () {
+                        typeWriter(text, index);
+                    }, speed);
+                }
+            }
+
+            // Trigger the typing effect on page load
+            typeWriter(text, 0);
+        });
+        
+
+
+
+        function setActiveLink(clickedLink) {
+            // Remove active class from all links
+            var links = document.querySelectorAll('.navigation-container a');
+            links.forEach(function (link) {
+                link.classList.remove('active');
+            });
+        
+            // Add active class to the clicked link
+            clickedLink.classList.add('active');
+        }
+
+        function allowDrop(event) {
+            event.preventDefault();
+            // document.getElementById('drop-area').innerText = 'drop your file to here';
+
+            var dropArea = document.getElementById('drop-area');
+            dropArea.innerText = 'Drop your PDF files here like magic! ✨';
+            dropArea.style.borderColor = '#42a5f5'; // Change the border color to a desired color
+        }
+
+        // function dropHandler(event) {
+        //     event.preventDefault();
+
+        //     var input = document.querySelector('input[type="file"]');
+        //     var output = document.getElementById('selectedFiles');
+
+        //     for (var i = 0; i < event.dataTransfer.files.length; ++i) {
+                
+        //         output.innerHTML += '<p>' + event.dataTransfer.files[i].name + '</p>';
+        //     }
+        // }
+
+        function dropHandler(event) {
+            event.preventDefault();
+
+            var input = document.querySelector('input[type="file"]');
+            var output = document.getElementById('selectedFiles');
+            var droppedFiles = event.dataTransfer.files;
+
+            // Check if any of the dropped files are not PDF files
+            for (var i = 0; i < droppedFiles.length; ++i) {
+                if (droppedFiles[i].type !== 'application/pdf') {
+                    displayFailMessage();
+                    // Display an error message for non-PDF files
+                    setTimeout(function () {
+                        resetDropArea();
+                    }, 2000);
+
+                    // Reset the selected files display
+                    // output.innerHTML = '';
+                    return;
+                }
+            }
+
+            for (var i = 0; i < event.dataTransfer.files.length; ++i) {
+                var file = event.dataTransfer.files[i];
+                output.innerHTML += '<p>' + event.dataTransfer.files[i].name + '</p>';
+            }
+
+            // Update the input element with the dropped files
+            updateInputFiles(event.dataTransfer.files);
+
+            // Display success message
+            // output.innerHTML += '<p style="color: green;">File(s) added successfully!</p>';
+            displaySuccessMessage();
+
+            // Reset drop area text after a short delay
+            setTimeout(function () {
+                resetDropArea();
+            }, 2000);
+        }
+
+        function updateInputFiles(droppedFiles) {
+            var input = document.querySelector('input[type="file"]');
+            var output = document.getElementById('selectedFiles');
+
+            // Create a new FormData object
+            var formData = new FormData();
+
+            // Append the existing files to the FormData object
+
+            for (var i = 0; i < input.files.length; ++i) {
+                formData.append('files[]', input.files[i]);
+            }
+
+            for (var i = 0; i < droppedFiles.length; ++i) {
+                formData.append('files[]', droppedFiles[i]);
+            }
+
+             // Create a new file input element
+            var newInput = document.createElement('input');
+            newInput.type = 'file';
+            newInput.name = 'files[]';
+            newInput.multiple = true;
+
+            // Create a new FileList object for the new input element
+            var newFileList = new DataTransfer();
+                    
+            // Append the new files to the new input element
+            for (var pair of formData.entries()) {
+                // newInput.files.push(pair[1]);
+                newFileList.items.add(pair[1]);
+                // output.innerHTML += '<p>' + pair[0] + ': ' + pair[1].name + "is push" + '</p>';
+            }
+
+            // Set the files for the new input element
+            newInput.files = newFileList.files;
+        
+            // Replace the existing input element with the new one
+            input.parentNode.replaceChild(newInput, input);
+            
+        }
+
+        function displaySuccessMessage() {
+            var dropArea = document.getElementById('drop-area');
+            dropArea.innerText = 'Files successfully added! ✔️';
+            dropArea.style.color = 'lightgreen';
+            dropArea.style.fontWeight = 'bold';
+        }
+
+        function displayFailMessage() {
+            var dropArea = document.getElementById('drop-area');
+            dropArea.innerText = 'Only PDF files are allowed! ❌';
+            dropArea.style.color = 'red';
+            dropArea.style.fontWeight = 'bold';
+        }
+
+
+        // function resetDropArea() {
+        //     document.getElementById('drop-area').innerText = 'Drop files here or click to select';
+        //     dropArea.style.color = 'white';
+        //     dropArea.style.fontWeight = 'normal';
+        // }
+
+        function resetDropArea() {
+            var dropArea = document.getElementById('drop-area');
+            dropArea.innerText = '📁 Drag and drop your files here';
+            dropArea.style.color = 'white'; // Reset the color to default
+            dropArea.style.fontWeight = 'normal'; // Reset the font weight to normal
+            dropArea.style.borderColor = '#aaaaaa';
+        }
+
+
+        function displaySelectedFiles() {
+            var input = document.querySelector('input[type="file"]');
+            var output = document.getElementById('selectedFiles');
+            // output.innerHTML = '<p>Selected Files:</p>';
+            
+            for (var i = 0; i < input.files.length; ++i) {
+                output.innerHTML += '<p>' + input.files[i].name + '</p>';
+            }
+        }
+
+        function convertFiles() {
+            var form = document.querySelector('form');
+            var formData = new FormData(form);
+
+            // Use formData to send to PHP or perform any other actions
+            // ...
+
+            // Example: Send data using fetch
+            fetch('upload.php', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                // Handle success, if needed
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle errors, if needed
+            });
+        }
+    </script>
+</body>
+
+</html>

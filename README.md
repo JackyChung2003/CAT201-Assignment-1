@@ -1,7 +1,7 @@
 # CAT201-Assignment-1
 
-## **[Get Started With Github Command]**
-### Step 1: Clone the Repository
+
+## Step 1: Clone the Repository
 
 To begin working on the assignment, clone the repository to your local machine. Follow the instructions in [**CLONE_REPO.md**](CLONE_REPO.md) for a detailed guide on how to clone the repository.
 
@@ -36,35 +36,42 @@ git merge branch-name
 
 ### Step 3: Set up Linux Apache webserver
 
-Can go and check the [**How to install Apache web server in a Docker container**](DOCKER_APACHE_SERVER.md).
 
-## **[Run Our Server Within Docker]**
+can go and check the [**How to install Apache web server in a Docker container**](DOCKER_APACHE_SERVER.md).
 
+> ## Run Our Server Within Docker
 ### Step 1: Open Docker
 
-Open your **Docker**. Make sure you log into your Docker account.
+Open your **Docker**. Make sure you **log into your Docker account**.
 
-### Step 2: Open Ubuntu
+### Step 2: Open WSL
 
-Open your **Ubuntu**.
+Open your **WSL**.
 
-### Step 3: Set the Correct Directory
+### Step 3: Set the Correct Directory in WSL
 
-Make sure you are in the **directory of the parent file**.
+Make sure your WSL directory is pointed to the **directory of the parent file**.
 
-For example, in this Github repository, the parent file is `CAT201-Assignment-1`, then you should set your current directory by running this **command** in your **Ubuntu**:
+For example, in this Github repository, the parent file is `CAT201-Assignment-1/Apache`, then you should set your current directory by running this **command** in your **WSL**:
 ```bash
-cd <your-path>/CAT201-Assignment-1
+cd <your-path>/CAT201-Assignment-1/Apache
 ```
 Replace `<your-path>` with **your path that includes the parent file**.
 
-### Step 4: Run Command In Ubuntu
-
-Run this **command** in your **Ubuntu**:
+This is an example shows how the directory looks like:
 ```bash
-sudo ./start.sh
+root@Axler-Laptop2:/mnt/d/Coding/CAT201/CAT201-Assignment-1#
 ```
-Make sure your **Docker doesn't have any containers** !!
+
+### Step 4: Run Command In WSL
+
+It is better to ensure that your **Docker doesn't include any containers** to avoid the conflicts.
+
+Then, run this **command** in your **WSL**:
+```bash
+docker-compose up --build
+```
+
 ### Step 5: Done
 If everything is correct, it will show your `Network apache_default` and `Container apache-sercice` is created:
 ```bash
