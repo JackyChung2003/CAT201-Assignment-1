@@ -59,7 +59,7 @@ Replace `<your-path>` with **your path that includes the parent file**.
 
 This is an example shows how the directory looks like:
 ```bash
-root@Axler-Laptop2:/mnt/d/Coding/CAT201/CAT201-Assignment-1#
+root@Axler-Laptop2:/mnt/d/Coding/CAT201/CAT201-Assignment-1/Apache#
 ```
 
 ### Step 4: Run Command In WSL
